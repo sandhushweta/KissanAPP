@@ -1,8 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
 
-
+import Home from "../../pages/Home";
 import { NavigationContainer } from "@react-navigation/native";
+import Profile from "../../pages/Profile";
 import React from "react";
+import Shops from "../../pages/Shops";
 import Welcome from "../../pages/Welcome";
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -15,9 +17,10 @@ const Navigation = () => {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName={"Welcome"}>
-        <Stack.Screen name="Welcome" component={Welcome} />
-        
+        initialRouteName={"Home"}>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Shops" component={Shops} />
+        <Stack.Screen name="Profile" component={Profile} />
       </Stack.Navigator>
     </NavigationContainer>
   );

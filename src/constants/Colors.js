@@ -1,4 +1,6 @@
 export const COLORS = {
   INDICATOR_COLOR: "#6060A0",
   LABEL_COLOR: "#f54293",
+  HOME_CARD_COLOR: "#26C485",
+  TOP_BAR_COLOR: "#F3FFFA",
 };
