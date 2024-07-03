@@ -1,7 +1,24 @@
-import {StackActions} from '@react-navigation/routers';
-import React from 'react';
-import StackNavigator from './src/screens/navigation/StackNavigator';
-const App = () => {
-  return <StackNavigator />;
-};
-export default App;
+import { StyleSheet, Text, View } from "react-native";
+
+import Navigation from "./src/navigation/stackNavigation";
+import { StatusBar } from "expo-status-bar";
+
+export default function App() {
+  return (
+    <>
+      <Navigation />
+    </>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
