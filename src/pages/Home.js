@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useState } from "react";
 
 import { COLORS } from "../constants/Colors";
@@ -6,23 +6,27 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import TopBar from "../components/TopBar";
 import { containerStyle } from "../styles";
 
-const Home = () => {
+const Home = ({ navigation }) => {
+  const [mode, setMode] = useState(true);
   const WelcomeLogoImage = require("../../assets/img/Weather.png");
   const ShopLogoImage = require("../../assets/img/Shop.jpeg");
   const UserLogoImage = require("../../assets/img/User.jpeg");
   const LightLogoImage = require("../../assets/img/light.png");
   const DarkLogoImage = require("../../assets/img/dark.jpeg");
 
-  const [mode, setMode] = useState(false);
-
   return (
     <SafeAreaView
       style={{
         width: "100%",
         height: "100",
-        backgroundColor: COLORS.TOP_BAR_COLOR,
+        backgroundColor: mode ? COLORS.TOP_BAR_COLOR : COLORS.DARK_THEME,
       }}>
-      <TopBar RightIcon={"menu"} LeftIcon={"bell"} />
+      <TopBar
+        mode={mode}
+        RightIcon={"menu"}
+        LeftIcon={"account-circle"}
+        navigation={navigation}
+      />
       <View
         style={{
           width: "100%",
@@ -32,42 +36,56 @@ const Home = () => {
           marginTop: 100,
           gap: 5,
         }}>
-        <View
-          style={{
-            backgroundColor: "white",
-            width: 150,
-            height: 150,
-            justifyContent: "center",
-            alignItems: "center",
-            borderTopRightRadius: 40,
-            borderBottomLeftRadius: 40,
-            elevation: 20,
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("Weather", { mode: mode });
           }}>
-          <Image
-            style={{ height: 100, width: 100 }}
-            source={WelcomeLogoImage}
-          />
-          <Text style={{ fontSize: 14, fontWeight: "700", marginTop: -21 }}>
-            Weather
-          </Text>
-        </View>
-        <View
-          style={{
-            backgroundColor: "white",
-            width: 150,
-            height: 150,
-            justifyContent: "center",
-            alignItems: "center",
-            borderTopLeftRadius: 40,
-            borderBottomRightRadius: 40,
-            elevation: 20,
+          <View
+            style={{
+              backgroundColor: mode ? "white" : "gray",
+              borderColor: !mode && "white",
+              borderWidth: 3,
+              width: 150,
+              height: 150,
+              justifyContent: "center",
+              alignItems: "center",
+              borderTopRightRadius: 40,
+              borderBottomLeftRadius: 40,
+              elevation: 20,
+            }}>
+            <Image
+              style={{ height: 100, width: 100 }}
+              source={WelcomeLogoImage}
+            />
+            <Text style={{ fontSize: 14, fontWeight: "700", marginTop: -21 }}>
+              Weather
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("Shops", { mode: mode });
           }}>
-          <Image
-            style={{ height: 65, width: 65, marginTop: 10 }}
-            source={ShopLogoImage}
-          />
-          <Text style={{ fontSize: 14, fontWeight: "700" }}>Shop</Text>
-        </View>
+          <View
+            style={{
+              backgroundColor: mode ? "white" : "gray",
+              borderColor: !mode && "white",
+              borderWidth: 3,
+              width: 150,
+              height: 150,
+              justifyContent: "center",
+              alignItems: "center",
+              borderTopLeftRadius: 40,
+              borderBottomRightRadius: 40,
+              elevation: 20,
+            }}>
+            <Image
+              style={{ height: 65, width: 65, marginTop: 10 }}
+              source={ShopLogoImage}
+            />
+            <Text style={{ fontSize: 14, fontWeight: "700" }}>Shops</Text>
+          </View>
+        </TouchableOpacity>
       </View>
       <View
         style={{
@@ -79,41 +97,62 @@ const Home = () => {
           marginTop: -5,
           elevation: 20,
         }}>
-        <View
-          style={{
-            backgroundColor: "white",
-            width: 150,
-            height: 150,
-            justifyContent: "center",
-            alignItems: "center",
-            borderTopLeftRadius: 40,
-            borderBottomRightRadius: 40,
-            elevation: 20,
-            justifyContent: "center",
-            alignItems: "center",
+        {/* dark mode and light mode feature starting here  */}
+
+        <TouchableOpacity
+          onPress={() => {
+            if (!mode) {
+              setMode(true);
+            } else {
+              setMode(false);
+            }
           }}>
-          <Image
-            style={{ height: 70, width: 70 }}
-            source={mode ? LightLogoImage : DarkLogoImage}
-          />
-          <Text style={{ fontSize: 14, fontWeight: "700" }}>Mode</Text>
-        </View>
-        <View
-          style={{
-            backgroundColor: "white",
-            width: 150,
-            height: 150,
-            justifyContent: "center",
-            alignItems: "center",
-            borderTopRightRadius: 40,
-            borderBottomLeftRadius: 40,
-            elevation: 20,
+          <View
+            style={{
+              backgroundColor: mode ? "white" : "gray",
+              borderColor: !mode && "white",
+              borderWidth: 3,
+              width: 150,
+              height: 150,
+              justifyContent: "center",
+              alignItems: "center",
+              borderTopLeftRadius: 40,
+              borderBottomRightRadius: 40,
+              elevation: 20,
+              justifyContent: "center",
+              alignItems: "center",
+            }}>
+            <Image
+              style={{ height: 70, width: 70 }}
+              source={!mode ? DarkLogoImage : LightLogoImage}
+            />
+            <Text style={{ fontSize: 14, fontWeight: "700" }}>Mode</Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("Profile", { mode: mode });
           }}>
-          <Image style={{ height: 80, width: 80 }} source={UserLogoImage} />
-          <Text style={{ fontSize: 14, fontWeight: "700", marginBottom: 15 }}>
-            Profile
-          </Text>
-        </View>
+          <View
+            style={{
+              backgroundColor: mode ? "white" : "gray",
+              borderColor: !mode && "white",
+              borderWidth: 3,
+              width: 150,
+              height: 150,
+              justifyContent: "center",
+              alignItems: "center",
+              borderTopRightRadius: 40,
+              borderBottomLeftRadius: 40,
+              elevation: 20,
+            }}>
+            <Image style={{ height: 80, width: 80 }} source={UserLogoImage} />
+            <Text style={{ fontSize: 14, fontWeight: "700", marginBottom: 15 }}>
+              About
+            </Text>
+          </View>
+        </TouchableOpacity>
       </View>
       <View
         style={{
@@ -164,4 +203,9 @@ const Home = () => {
 
 export default Home;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLORS.TOP_BAR_COLOR,
+  },
+});

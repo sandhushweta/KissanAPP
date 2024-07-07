@@ -3,4 +3,5 @@ export const COLORS = {
   LABEL_COLOR: "#f54293",
   HOME_CARD_COLOR: "#26C485",
   TOP_BAR_COLOR: "#F3FFFA",
+  DARK_THEME: "#333333",
 };

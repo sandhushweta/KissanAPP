@@ -4,24 +4,33 @@ import { Appbar } from "react-native-paper";
 import { COLORS } from "../constants/Colors";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-const TopBar = ({ navigation, RightIcon, LeftIcon }) => {
-  const _goBack = () => {
-    navigation.navigate("ComponentNavigation");
+const TopBar = ({ navigation, leftIcon, mode, title }) => {
+  const _handleBack = () => {
+    navigation.goBack();
   };
-
-  const _handleSearch = () => console.log("Searching");
-
-  const _handleMore = () => console.log("Shown more");
-
   return (
     <SafeAreaProvider>
       <Appbar.Header
         style={{
           justifyContent: "space-between",
-          backgroundColor: COLORS.TOP_BAR_COLOR,
+          backgroundColor: mode ? COLORS.TOP_BAR_COLOR : COLORS.DARK_THEME,
         }}>
-        <Appbar.Action icon={RightIcon} onPress={_handleMore} />
-        <Appbar.Action icon={LeftIcon} onPress={_handleSearch} />
+        <Appbar.Action
+          color={!mode && "white"}
+          icon={leftIcon}
+          onPress={_handleBack}
+        />
+
+        <Appbar.Content title={title}></Appbar.Content>
+        {title !== "About" && (
+          <Appbar.Action
+            color={!mode && "white"}
+            icon={"account-circle"}
+            onPress={() => {
+              navigation.navigate("Profile", { mode: mode });
+            }}
+          />
+        )}
       </Appbar.Header>
     </SafeAreaProvider>
   );
