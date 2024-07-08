@@ -89,9 +89,9 @@ const Profile = ({ route, navigation }) => {
         </View>
         <View style={{ marginTop: 20, alignItems: "center" }}>
           <Text>Teams Email ID's </Text>
-          <Text style={{ color: "blue" }}>dummy@gmail.com</Text>
-          <Text style={{ color: "blue" }}>dummy@gmail.com</Text>
-          <Text style={{ color: "blue" }}>dummy@gmail.com</Text>
+          <Text style={{ color: "blue" }}>sandhushweta1408@gmail.com</Text>
+          <Text style={{ color: "blue" }}>upinderjit17@gmail.com</Text>
+      
         </View>
       </View>
     </SafeAreaView>
