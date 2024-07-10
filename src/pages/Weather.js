@@ -7,7 +7,6 @@ import {
   View,
 } from "react-native";
 import {
-  Appbar,
   Avatar,
   Card,
   List,
@@ -30,7 +29,7 @@ const Weather = ({ route, navigation }) => {
   console.log("mode", mode);
 
   const API_KEY = WEATHER_API_KEY;
-  const LOCATION = "Punjab"; // You can make this dynamic based on user input
+  const LOCATION = "Punjab"; 
 
   useEffect(() => {
     const fetchWeatherData = async () => {
@@ -113,10 +112,6 @@ const Weather = ({ route, navigation }) => {
       <TopBar mode={mode} leftIcon={"arrow-left"} navigation={navigation} />
 
       <View style={styles.container}>
-        {/* <Appbar.Header>
-          <Appbar.Content title="Weather" subtitle="Current and Forecast" />
-        </Appbar.Header> */}
-
         <ScrollView>
           <Card style={styles.card}>
             <Card.Content>
@@ -151,7 +146,6 @@ export default Weather;
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
     backgroundColor: COLORS.TOP_BAR_COLOR,
     marginTop: 100,
     marginHorizontal: 10,

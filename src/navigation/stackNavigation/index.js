@@ -8,6 +8,8 @@ import Shops from "../../pages/Shops";
 import Weather from "../../pages/Weather";
 import Welcome from "../../pages/Welcome";
 import { createStackNavigator } from "@react-navigation/stack";
+import CustomWebView from "../../pages/WebView";
+
 
 const Navigation = () => {
   const Stack = createStackNavigator();

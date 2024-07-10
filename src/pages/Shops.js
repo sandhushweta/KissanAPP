@@ -5,17 +5,15 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
 } from "react-native";
 
-import { Card } from "react-native-paper"; // Assuming you're using React Native Paper for UI components
+import { Card } from "react-native-paper";
 import TopBar from "../components/TopBar";
-import WebView from "react-native-webview";
 
 const Shops = ({ navigation, route }) => {
-  const { mode } = route.params; // Assuming mode is passed from navigation params
+  const { mode } = route.params; 
 
-  // Dummy data for shops (replace with actual data from your API or state)
+
 
   const [displayUrl, setDisplayUrl] = useState("");
   const shops = [
@@ -51,19 +49,9 @@ const Shops = ({ navigation, route }) => {
       longitude: 75.7178,
       url: " https://www.google.com/maps/place/CM+AGRO+DASUYA/@31.8273994,75.6509113,1011m/data=!3m1!1e3!4m10!1m2!2m1!1sDasuya+Agro+Stores!3m6!1s0x391ba17b112c7815:0x3cfcfd071181930d!8m2!3d31.8266267!4d75.6572531!15sChJEYXN1eWEgQWdybyBTdG9yZXOSAQ50cmFjdG9yX2RlYWxlcuABAA!16s%2Fg%2F11vs2bk5l6?entry=ttu",
     },
-    // {
-    //   id: 5,
-    //   name: "Golden Harvest Farm Shop",
-    //   location: "234 Khera Road, Dasuya",
-    //   latitude: 31.8163,
-    //   longitude: 75.7151,
-    // },
+
   ];
 
-  const handleShopPress = (shop) => {
-    // Navigate to shop detail or map screen with shop details
-    // Example navigation.navigate('ShopDetail', { shop });
-  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -73,23 +61,14 @@ const Shops = ({ navigation, route }) => {
         leftIcon="arrow-left"
         mode={mode}
       />
-
-      <WebView
-        source={{ uri: displayUrl }}
-        style={{
-          flex: 1,
-          width: "100%",
-          height: "100%",
-        }}
-      />
-      <ScrollView horizontal={true} style={styles.shopList}>
+      <ScrollView  style={styles.shopList}>
         {shops.map((shop) => (
           <>
             <TouchableOpacity
               key={shop.id}
               style={styles.card}
-              onPress={() => setDisplayUrl(shop.url)}>
-              <Card>
+              onPress={() =>     navigation.navigate('webview', { url: shop.url })}>
+              <Card style = {{width : 300}}>
                 <Card.Content>
                   <Text style={styles.shopName}>{shop.name}</Text>
                   <Text style={styles.shopLocation}>{shop.location}</Text>
@@ -116,14 +95,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#f0f0f0",
   },
   shopList: {
-    flexDirection: "row",
-    paddingVertical: 10,
+    width : "100%",
   },
   card: {
-    paddingHorizontal: 10,
-    width: 450,
-    marginRight: 10,
-    height: 400,
+    marginVertical : 10,
+    justifyContent : "center",
+    alignItems : "center"
   },
   shopName: {
     fontSize: 16,

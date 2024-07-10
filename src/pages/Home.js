@@ -97,6 +97,7 @@ const Home = ({ navigation }) => {
           marginTop: -5,
           elevation: 20,
         }}>
+        
         {/* dark mode and light mode feature starting here  */}
 
         <TouchableOpacity

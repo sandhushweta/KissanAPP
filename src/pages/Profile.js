@@ -92,6 +92,11 @@ const Profile = ({ route, navigation }) => {
           <Text style={{ color: "blue" }}>sandhushweta1408@gmail.com</Text>
           <Text style={{ color: "blue" }}>upinderjit17@gmail.com</Text>
       
+        </View>       
+         <View style={{ marginTop: 20, alignItems: "center" }}>
+          <Text>Cordinator Sir Email ID's </Text>
+          <Text style={{ color: "blue" }}>pro.kuldeepkumar@gmail.com</Text>
+         
         </View>
       </View>
     </SafeAreaView>

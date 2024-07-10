@@ -1,18 +1,16 @@
 import { ImageBackground, StyleSheet, Text, View } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 
 import CustomButton from "../components/CustomButton";
-import Loader from "../components/loader";
 import { containerStyle } from "../styles";
 
 const WelcomeImage = require("../../assets/img/welcome.jpg");
 
 const Welcome = () => {
-  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <>
-      {isLoading === false ? (
+
         <ImageBackground
           imageStyle={{ opacity: 0.7 }}
           source={WelcomeImage}
@@ -47,9 +45,7 @@ const Welcome = () => {
             <CustomButton title={"Get Started"}></CustomButton>
           </View>
         </ImageBackground>
-      ) : (
-        <Loader />
-      )}
+
     </>
   );
 };

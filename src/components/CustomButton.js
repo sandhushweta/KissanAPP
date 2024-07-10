@@ -1,11 +1,11 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {  Text, TouchableOpacity, View } from "react-native";
 
 import React from "react";
 
 const CustomButton = ({ title }) => {
   return (
     <View>
-      <TouchableOpacity
+      <TouchableOpacit
         style={{
           width: 300,
           height: 50,
@@ -14,7 +14,7 @@ const CustomButton = ({ title }) => {
           borderRadius: 20,
         }}>
         <Text style={{ textAlign: "center", fontWeight: "bold" }}>{title}</Text>
-      </TouchableOpacity>
+      </TouchableOpacit>
     </View>
   );
 };
